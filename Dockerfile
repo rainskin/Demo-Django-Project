@@ -8,7 +8,7 @@ WORKDIR /app
 ENV PYTHONUNBUFFERED 1
 
 # Устанавливаем Poetry
-RUN pip install poetry==1.8.2 --no-cache-dir
+RUN pip install poetry
 
 # Копируем файлы проекта, необходимые для установки зависимостей Poetry
 COPY pyproject.toml poetry.lock /app/
