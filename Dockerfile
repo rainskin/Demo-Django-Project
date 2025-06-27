@@ -28,4 +28,4 @@ EXPOSE 8000
 # а wsgi.py находится в 'myproject/wsgi.py'.
 # Замени 'myproject.wsgi:application' на путь к твоему wsgi.py,
 # например, 'ваше_имя_проекта.wsgi:application'
-CMD ["poetry", "run", "gunicorn", "--bind", "0.0.0.0:8000", "myproject.wsgi:application"]
+CMD ["poetry", "run", "gunicorn", "--bind", "0.0.0.0:8000", "core.wsgi:application"]

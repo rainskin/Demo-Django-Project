@@ -7,7 +7,7 @@ services:
     container_name: ${PROJECT_NAME}
     # Команда для запуска Gunicorn через Poetry.
     # Убедитесь, что 'myproject.wsgi:application' соответствует пути к вашему wsgi.py.
-    command: poetry run gunicorn myproject.wsgi:application --bind 0.0.0.0:8000
+    command: poetry run gunicorn core.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - .:/app
       - static_volume:/app/staticfiles
@@ -24,7 +24,7 @@ services:
     ports:
       - "8080:80" # Внешний порт 8080 будет перенаправлен на порт 80 контейнера Nginx
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/conf.d/myproject.conf:ro # <-- ИЗМЕНЕНО ЗДЕСЬ!
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf:ro # <-- ИЗМЕНЕНО ЗДЕСЬ!
       - static_volume:/app/staticfiles
       - media_volume:/app/media
     depends_on:
