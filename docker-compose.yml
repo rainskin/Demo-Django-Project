@@ -12,6 +12,7 @@ services:
       - .:/app
       - static_volume:/app/staticfiles
       - media_volume:/app/media
+      - ./db.sqlite3:/app/db.sqlite3
     expose:
       - 8000
     env_file:
@@ -24,7 +25,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/conf.d/
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/myproject.conf
       - static_volume:/app/staticfiles
       - media_volume:/app/media
     depends_on:
