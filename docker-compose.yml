@@ -26,6 +26,8 @@ services:
       - "80:80"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - /etc/letsencrypt/live/tgup.su/fullchain.pem:/etc/nginx/ssl/fullchain.pem:ro
+      - /etc/letsencrypt/live/tgup.su/privkey.pem:/etc/nginx/ssl/privkey.pem:ro
       - static_volume:/app/staticfiles
       - media_volume:/app/media
     depends_on:
