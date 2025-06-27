@@ -24,7 +24,7 @@ services:
     ports:
       - "8080:80" # Внешний порт 8080 будет перенаправлен на порт 80 контейнера Nginx
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/conf.d/project.conf:ro # <-- ИЗМЕНЕНО ЗДЕСЬ!
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/myproject.conf:ro # <-- ИЗМЕНЕНО ЗДЕСЬ!
       - static_volume:/app/staticfiles
       - media_volume:/app/media
     depends_on:
