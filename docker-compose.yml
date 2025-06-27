@@ -13,7 +13,7 @@ services:
       - static_volume:/app/staticfiles
       - media_volume:/app/media
     expose:
-      - "8000"
+      - 8000
     env_file:
       - .env # Может быть пустым или удален, если нет других переменных
     # Зависимость от базы данных удалена, так как её нет

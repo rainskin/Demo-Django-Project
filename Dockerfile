@@ -22,7 +22,7 @@ RUN poetry install --no-root
 COPY . /app/
 
 # Открываем порт, который будет использовать Gunicorn
-EXPOSE 80
+EXPOSE 8000
 
 # Команда для запуска Gunicorn
 # Предполагается, что твой Django проект называется 'myproject',
