@@ -22,9 +22,9 @@ services:
     image: nginx:latest
     container_name: ${PROJECT_NAME}_nginx
     ports:
-      - "80:80" # <-- ВЕРНУЛИ НА 80-Й ПОРТ!
+      - "80:80"
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/conf.d/myproject.conf:ro
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/
       - static_volume:/app/staticfiles
       - media_volume:/app/media
     depends_on:
