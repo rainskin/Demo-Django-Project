@@ -6,8 +6,8 @@ services:
     # Используем переменную окружения для динамического имени контейнера
     container_name: ${PROJECT_NAME}
     # Команда для запуска Gunicorn через Poetry.
-    # Убедитесь, что 'core.wsgi:application' соответствует пути к вашему wsgi.py.
-    command: poetry run gunicorn core.wsgi:application --bind 0.0.0.0:8000
+    # Убедитесь, что 'myproject.wsgi:application' соответствует пути к вашему wsgi.py.
+    command: poetry run gunicorn myproject.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - .:/app
       - static_volume:/app/staticfiles
@@ -15,31 +15,21 @@ services:
     expose:
       - "8000"
     env_file:
-      - .env
-    depends_on:
-      - db
+      - .env # Может быть пустым или удален, если нет других переменных
+    # Зависимость от базы данных удалена, так как её нет
 
   nginx:
     image: nginx:latest
     container_name: ${PROJECT_NAME}_nginx
     ports:
-      - "80:80"
+      - "8080:80"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
       - static_volume:/app/staticfiles
       - media_volume:/app/media
     depends_on:
       - web
-
-  db:
-    image: postgres:13-alpine
-    container_name: ${PROJECT_NAME}_db
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-    env_file:
-      - .env
-
+      -
 volumes:
-  pgdata:
   static_volume:
   media_volume:
