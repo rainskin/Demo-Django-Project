@@ -7,6 +7,7 @@ WORKDIR /app
 # Отключаем буферизацию вывода Python для лучшего логирования
 ENV PYTHONUNBUFFERED 1
 
+
 # Устанавливаем Poetry
 RUN pip install poetry --no-cache-dir
 
@@ -21,7 +22,7 @@ RUN poetry install --no-root
 COPY . /app/
 
 # Открываем порт, который будет использовать Gunicorn
-EXPOSE 8000
+EXPOSE 80
 
 # Команда для запуска Gunicorn
 # Предполагается, что твой Django проект называется 'myproject',
