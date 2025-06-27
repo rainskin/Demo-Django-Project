@@ -13,17 +13,18 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import os
 
-
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# Это должно быть в верхней части settings.py. Убедись, что путь корректен для твоего проекта.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# *** ОБЯЗАТЕЛЬНО: Замени на свой домен и IP-адрес VPS! ***
+ALLOWED_HOSTS = ['*']
+# НИКОГДА не используй ALLOWED_HOSTS = ['*'] в продакшене!
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # Django будет собирать статику сюда
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # Путь для пользовательских медиафайлов
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -33,9 +34,6 @@ SECRET_KEY = 'django-insecure-j^kdh40#%iz#m%ut+u8#im$uhg%y1+$4a6i=_%(f4w%)u_qtkb
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 

@@ -8,7 +8,7 @@ WORKDIR /app
 ENV PYTHONUNBUFFERED 1
 
 # Устанавливаем Poetry
-RUN pip install poetry
+RUN pip install poetry --no-cache-dir
 
 # Копируем файлы проекта, необходимые для установки зависимостей Poetry
 COPY pyproject.toml poetry.lock /app/
@@ -28,4 +28,4 @@ EXPOSE 8000
 # а wsgi.py находится в 'myproject/wsgi.py'.
 # Замени 'myproject.wsgi:application' на путь к твоему wsgi.py,
 # например, 'ваше_имя_проекта.wsgi:application'
-CMD ["poetry", "run", "gunicorn", "--bind", "0.0.0.0:8000", "core.wsgi:application"]
+CMD ["poetry", "run", "gunicorn", "--bind", "0.0.0.0:8000", "myproject.wsgi:application"]
